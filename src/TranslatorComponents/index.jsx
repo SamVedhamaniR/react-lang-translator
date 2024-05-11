@@ -82,51 +82,49 @@ const handleCopyClipBoard = ()=>{
 }
   return (
     <>
-      <div className=" px-[7vw] mt-[150px] 2xl:px-0 mx-auto h-[400px] page-container border-[1px] rounded-md border-[#e3e2de] bg-[#faf9f5] my-auto">
-        <div className="flex flex-row space-x-4 mt-8 justify-center items-center">
-          <div>
-            <FormControl className="">
+      <div className="px-4 md:px-10 lg:px-20 mt-12 md:mt-20 xl:px-32 mx-auto h-[400px] page-container border-[1px] rounded-md border-[#e3e2de] bg-[#faf9f5] my-auto">
+        <div className="flex flex-col md:flex-row md:space-x-4 items-center  justify-center">
+          <div className="md:w-[300px]">
+            <FormControl className="w-full">
               <Select
                 value={inputLangFormat}
                 onChange={handleChange}
-                className="w-[300px]"
               >
                 <MenuItem value={"en"}>Select</MenuItem>  
                 {languageList?.map((el) => {
-                  return <MenuItem value={el?.code}>{el?.language}</MenuItem>;
+                  return <MenuItem key={el?.code} value={el?.code}>{el?.language}</MenuItem>;
                 })}
               </Select>
             </FormControl>
           </div>
-          <div>
-            <SwapHorizIcon onClick={handleReverseLanguage} className=" cursor-pointer" />
+          <div className="md:w-[50px]">
+            <SwapHorizIcon onClick={handleReverseLanguage} className="cursor-pointer" />
           </div>
-          <div>
+          <div className="md:w-[300px]">
             <FormControl fullWidth>
               <Select
-                className="w-[300px]"
                 value={outputLangFormat}
                 onChange={handleOutputFormatChange}
               >
                 <MenuItem value={""}>Select</MenuItem>
                 {languageList?.map((el) => {
-                  return <MenuItem value={el?.code}>{el?.language}</MenuItem>;
+                  return <MenuItem key={el?.code} value={el?.code}>{el?.language}</MenuItem>;
                 })}
               </Select>
             </FormControl>
           </div>
         </div>
-        <div className="flex">
-          <div className="ml-[310px] mt-4">
-            <textarea type="text" placeholder="Enter Text" value={inputVal} onChange={(e)=>handleInputChange(e)} className=" border-[1px] focus-within:outline-0 px-4 h-[200px] w-[300px] py-[4px] border620 bg-white rounder-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" />
-            {inputVal?.length !==0 && <CloseIcon onClick={handleReset} className="absolute left-[695px] mt-2 m-[5px] cursor-pointer" />}
+        <div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0 mt-4 item-center justify-center">
+          <div className="md:w-[300px] relative">
+            <textarea type="text" placeholder="Enter Text" value={inputVal} onChange={handleInputChange} className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" />
+            {inputVal?.length !==0 && <CloseIcon onClick={handleReset} className="absolute right-[10px] top-[10px] cursor-pointer" />}
           </div>
-          <div className="mt-4 ml-14">
-            <p className="border-[1px] focus-within:outline-0 px-4 h-[200px] w-[300px] py-[4px] border620 bg-white rounder-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" >{translateText}</p>
-            <ContentCopyIcon title="Copy to clipboard" onClick={handleCopyClipBoard} className="absolute right-[450px] mt-[-30px] cursor-pointer"/>
+          <div className="md:w-[300px] mt-4 md:mt-0 relative">
+            <p className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none">{translateText}</p>
+            <ContentCopyIcon title="Copy to clipboard" onClick={handleCopyClipBoard} className="absolute right-[10px] top-[10px] cursor-pointer"/>
           </div>
         </div>
-        <button onClick={handleTranslate} className="w-[650px] mt-6 relative p-[10px] border-2px border-[#6d9eed] rounded-md cursor-pointer text-[16px] bg-[#6d9eed] text-[#fff]">Translate</button>
+        <button onClick={handleTranslate} className="w-full mt-6 p-[10px] border-2 border-[#6d9eed] rounded-md cursor-pointer text-[16px] bg-[#6d9eed] text-[#fff]">Translate</button>
       </div>
       <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={openLoader}>
         <CircularProgress color="inherit" />
@@ -136,3 +134,4 @@ const handleCopyClipBoard = ()=>{
 };
 
 export default Translator;
+  
