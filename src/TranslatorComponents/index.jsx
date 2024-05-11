@@ -114,14 +114,14 @@ const handleCopyClipBoard = ()=>{
             </FormControl>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0 mt-4 item-center justify-center">
+        <div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0 mt-4 item-center justify-center ">
           <div className="md:w-[300px] relative">
-            <textarea type="text" placeholder="Enter Text" value={inputVal} onChange={handleInputChange} className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" />
-            {inputVal?.length !==0 && <CloseIcon onClick={handleReset} className="absolute right-[10px] top-[10px] cursor-pointer" />}
+           <textarea type="text" placeholder="Enter Text" value={inputVal} onChange={handleInputChange} className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" />
+            {inputVal?.length !==0 && <CloseIcon onClick={handleReset} className="absolute right-[20px] top-[10px] cursor-pointer" />}
           </div>
           <div className="md:w-[300px] mt-4 md:mt-0 relative">
-            <p className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none">{translateText}</p>
-            <ContentCopyIcon title="Copy to clipboard" onClick={handleCopyClipBoard} className="absolute right-[10px] top-[10px] cursor-pointer"/>
+            <textarea type="text" placeholder="Enter Text" value={translateText}  className="w-full border-[1px] focus:outline-none px-4 h-[200px] py-[4px] bg-white rounded-[8px] shadow-[0px_4px_20px_rgba(238,238,238,0.5) resize-none" />
+            <ContentCopyIcon title="Copy to clipboard" onClick={handleCopyClipBoard} className="absolute right-[20px] bottom-[10px] cursor-pointer"/>
           </div>
         </div>
         <button onClick={handleTranslate} className="w-full mt-6 p-[10px] border-2 border-[#6d9eed] rounded-md cursor-pointer text-[16px] bg-[#6d9eed] text-[#fff]">Translate</button>
